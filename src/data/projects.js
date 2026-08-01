@@ -3,7 +3,7 @@ export const projects = [
     id: 1,
     title: "FleetGo",
     description:
-      "Aplikasi ini ditujukan untuk manajemen Pemesanan Kendaraan Operasional Berbasis Web pada PT. Telemedia Dinamika Sarana, yang didalamnya terdapat fitur seperti login, isi form pemesanan, dan melihat status pemesanan",
+      "Aplikasi ini ditujukan untuk manajemen Pemesanan Kendaraan Operasional Berbasis Web, yang didalamnya terdapat fitur seperti login, isi form pemesanan, dan melihat status pemesanan",
     techStack: ["Vue.js", "JavaScript", "HTML", "CSS","Node.js"],
     github: "https://github.com/ArzaVie/FleetGo.git",
   },

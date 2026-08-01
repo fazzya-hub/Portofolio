@@ -82,7 +82,10 @@ const contactInfo = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 bg-slate-950 px-6">
+    <section
+      id="contact"
+      className="py-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900 px-6"
+    >
       <div className="max-w-4xl mx-auto text-center">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
@@ -93,7 +96,7 @@ export default function Contact() {
         >
           Contact
         </motion.h2>
-        <div className="w-16 h-1 bg-teal-400 mx-auto mb-12 rounded-full" />
+        <div className="w-16 h-1 bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 mx-auto mb-12 rounded-full" />
 
         <motion.div
           initial={{ y: 20, opacity: 0 }}
@@ -111,7 +114,7 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={link.label}
-                className="p-4 bg-slate-800/60 border border-slate-700/50 rounded-xl text-slate-400 hover:text-white hover:border-teal-500/40 hover:bg-slate-800 transition-all duration-200"
+                className="p-4 bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 rounded-xl text-slate-400 hover:text-white hover:border-teal-500/40 hover:shadow-lg hover:shadow-teal-500/10 transition-all duration-200"
               >
                 <Icon size={24} />
               </a>

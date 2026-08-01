@@ -17,7 +17,7 @@ export default function Navbar() {
   const active = useActiveSection(sectionIds);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-slate-900/90 to-slate-900/50 backdrop-blur-md border-b border-slate-700/40">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
         <ul className="hidden md:flex items-center gap-8">
@@ -28,9 +28,9 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`text-sm font-medium transition-colors duration-200 ${
+                  className={`text-sm font-medium transition-all duration-200 ${
                     isActive
-                      ? "text-teal-400"
+                      ? "bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent"
                       : "text-slate-300 hover:text-white"
                   }`}
                 >
@@ -59,9 +59,9 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`block transition-colors duration-200 ${
+                  className={`block transition-all duration-200 ${
                     isActive
-                      ? "text-teal-400 font-medium"
+                      ? "bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent font-medium"
                       : "text-slate-300 hover:text-white"
                   }`}
                   onClick={() => setIsOpen(false)}

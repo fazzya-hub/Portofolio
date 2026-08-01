@@ -13,4 +13,10 @@ html {
 body {
   margin: 0;
   font-family: var(--font-sans);
+  background-color: #0f172a;
+}
+
+::selection {
+  background-color: rgba(45, 212, 191, 0.3);
+  color: #fff;
 }

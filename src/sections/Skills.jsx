@@ -31,7 +31,10 @@ const skillCategories = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 bg-slate-950 px-6">
+    <section
+      id="skills"
+      className="py-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900 px-6"
+    >
       <div className="max-w-5xl mx-auto">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
@@ -42,7 +45,7 @@ export default function Skills() {
         >
           Skills
         </motion.h2>
-        <div className="w-16 h-1 bg-teal-400 mx-auto mb-12 rounded-full" />
+        <div className="w-16 h-1 bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 mx-auto mb-12 rounded-full" />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category, i) => {
@@ -54,11 +57,11 @@ export default function Skills() {
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-6 hover:border-teal-500/30 transition-colors duration-300"
+                className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 rounded-2xl p-6 hover:border-teal-500/40 transition-colors duration-300"
               >
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="p-2 bg-teal-500/10 rounded-lg">
-                    <Icon size={20} className="text-teal-400" />
+                  <div className="p-2 bg-gradient-to-br from-teal-500/25 to-cyan-500/25 rounded-lg">
+                    <Icon size={20} className="text-teal-300" />
                   </div>
                   <h3 className="text-lg font-semibold text-white">
                     {category.title}
@@ -69,7 +72,7 @@ export default function Skills() {
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1.5 text-xs font-medium bg-slate-700/50 text-slate-300 border border-slate-600/50 rounded-full"
+                      className="px-3 py-1.5 text-xs font-medium bg-gradient-to-r from-slate-700/60 to-slate-800/60 text-slate-300 border border-slate-600/40 rounded-full"
                     >
                       {skill}
                     </span>

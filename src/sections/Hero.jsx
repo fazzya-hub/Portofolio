@@ -5,8 +5,13 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 pt-20"
+      className="relative overflow-hidden min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 pt-20"
     >
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[420px] rounded-full bg-teal-500/20 blur-[130px]" />
+        <div className="absolute top-1/3 -right-40 w-[420px] h-[420px] rounded-full bg-blue-600/15 blur-[130px]" />
+        <div className="absolute bottom-0 -left-40 w-[420px] h-[420px] rounded-full bg-cyan-500/10 blur-[130px]" />
+      </div>
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
@@ -14,7 +19,7 @@ export default function Hero() {
           transition={{ duration: 0.5, type: "spring" }}
           className="mb-8"
         >
-          <div className="w-100 h-100 mx-auto rounded-full bg-gradient-to-br from-teal-400 to-cyan-300 p-1 overflow-hidden">
+          <div className="w-100 h-100 mx-auto rounded-full bg-gradient-to-br from-teal-400 via-cyan-400 to-blue-500 p-1 overflow-hidden shadow-lg shadow-teal-500/30">
             <img
               src="/profile.jpg"
               alt="Faraz Thifal"
@@ -59,7 +64,7 @@ export default function Hero() {
         >
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-teal-500 hover:bg-teal-400 text-white font-medium rounded-lg transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-medium rounded-lg shadow-lg shadow-teal-500/25 transition-all duration-200"
           >
             View Projects
             <ArrowRight size={18} />

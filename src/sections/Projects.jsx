@@ -1,4 +1,3 @@
-import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { projects } from "../data/projects";
 
@@ -22,7 +21,10 @@ function GithubIcon({ size = 16 }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 bg-slate-900 px-6">
+    <section
+      id="projects"
+      className="py-24 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 px-6"
+    >
       <div className="max-w-5xl mx-auto">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
@@ -33,7 +35,7 @@ export default function Projects() {
         >
           Projects
         </motion.h2>
-        <div className="w-16 h-1 bg-teal-400 mx-auto mb-12 rounded-full" />
+        <div className="w-16 h-1 bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 mx-auto mb-12 rounded-full" />
 
         <div className="grid sm:grid-cols-2 gap-6">
           {projects.map((project, i) => (
@@ -43,7 +45,7 @@ export default function Projects() {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="bg-slate-800/50 border border-slate-700/50 rounded-2xl overflow-hidden flex flex-col hover:border-teal-500/30 hover:-translate-y-1 transition-all duration-300"
+              className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 rounded-2xl overflow-hidden flex flex-col hover:border-teal-500/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10 transition-all duration-300"
             >
 
               <div className="p-6 flex flex-col flex-1">
@@ -59,7 +61,7 @@ export default function Projects() {
                   {project.techStack.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 text-xs font-medium bg-teal-500/10 text-teal-300 border border-teal-500/20 rounded-full"
+                      className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-teal-500/15 to-cyan-500/15 text-teal-300 border border-teal-500/25 rounded-full"
                     >
                       {tech}
                     </span>
