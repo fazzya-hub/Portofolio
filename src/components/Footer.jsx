@@ -7,8 +7,7 @@ export default function Footer() {
         <span>&copy; 2026 Faraz Thifal</span>
         <span className="hidden sm:inline">&middot;</span>
         <span className="flex items-center gap-1.5">
-          Made with{" "}
-          <Heart size={14} className="text-red-500 fill-red-500" /> using React
+          using React
         </span>
       </div>
     </footer>
