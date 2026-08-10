@@ -1,7 +1,7 @@
 import { Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
-function LinkedinIcon({ size = 24 }) {
+function LinkedinIcon({ size = 20 }) {
   return (
     <svg
       width={size}
@@ -20,7 +20,7 @@ function LinkedinIcon({ size = 24 }) {
   );
 }
 
-function GithubIcon({ size = 24 }) {
+function GithubIcon({ size = 20 }) {
   return (
     <svg
       width={size}
@@ -38,7 +38,7 @@ function GithubIcon({ size = 24 }) {
   );
 }
 
-function InstagramIcon({ size = 24 }) {
+function InstagramIcon({ size = 20 }) {
   return (
     <svg
       width={size}
@@ -80,30 +80,33 @@ const contactInfo = [
   { label: "Email", value: "farazzthifall@email.com", icon: Mail },
 ];
 
+const fadeUp = (delay = 0) => ({
+  initial: { y: 24, opacity: 0 },
+  whileInView: { y: 0, opacity: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] },
+});
+
 export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900 px-6"
+      className="section-pad relative overflow-hidden bg-ink-900 px-6"
     >
-      <div className="max-w-4xl mx-auto text-center">
-        <motion.h2
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl font-bold text-white mb-4"
-        >
-          Contact
-        </motion.h2>
-        <div className="w-16 h-1 bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 mx-auto mb-12 rounded-full" />
+      <div
+        className="pointer-events-none absolute -bottom-32 left-1/2 h-96 w-[600px] -translate-x-1/2 rounded-full bg-brand-500/10 blur-[140px]"
+        aria-hidden="true"
+      />
+      <div className="mx-auto max-w-4xl text-center">
+        <motion.div {...fadeUp(0)} className="mb-14">
+          <p className="eyebrow">Kontak</p>
+          <h2 className="heading-section mt-3">Mari Terhubung</h2>
+          <div className="mx-auto mt-6 h-1 w-14 rounded-full bg-gradient-to-r from-brand-400 to-cyan-400" />
+        </motion.div>
 
         <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex items-center justify-center gap-5 mb-8"
+          {...fadeUp(0.15)}
+          className="mb-12 flex items-center justify-center gap-4 sm:gap-5"
         >
           {socialLinks.map((link) => {
             const Icon = link.icon;
@@ -114,30 +117,36 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={link.label}
-                className="p-4 bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 rounded-xl text-slate-400 hover:text-white hover:border-teal-500/40 hover:shadow-lg hover:shadow-teal-500/10 transition-all duration-200"
+                className="group flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:border-brand-400/40 hover:bg-brand-400/10 hover:text-brand-300 hover:shadow-lg hover:shadow-brand-500/20"
               >
-                <Icon size={24} />
+                <Icon size={20} />
               </a>
             );
           })}
         </motion.div>
 
         <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8"
+          {...fadeUp(0.3)}
+          className="mx-auto grid max-w-2xl gap-4 sm:grid-cols-2"
         >
           {contactInfo.map((info) => {
             const Icon = info.icon;
             return (
               <div
                 key={info.label}
-                className="flex items-center gap-2.5 text-slate-400"
+                className="card flex items-center gap-4 p-5 text-left transition-all duration-300 hover:border-brand-400/30 hover:shadow-lg hover:shadow-brand-500/10"
               >
-                <Icon size={18} className="text-slate-500" />
-                <span className="text-sm">{info.value}</span>
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500/20 to-cyan-500/20 text-brand-300">
+                  <Icon size={20} />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-medium uppercase tracking-wider text-slate-500">
+                    {info.label}
+                  </p>
+                  <p className="truncate text-sm font-medium text-white">
+                    {info.value}
+                  </p>
+                </div>
               </div>
             );
           })}

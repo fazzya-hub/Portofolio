@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { projects } from "../data/projects";
 
@@ -19,66 +20,78 @@ function GithubIcon({ size = 16 }) {
   );
 }
 
+const fadeUp = (delay = 0) => ({
+  initial: { y: 24, opacity: 0 },
+  whileInView: { y: 0, opacity: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] },
+});
+
 export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-24 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 px-6"
+      className="section-pad relative overflow-hidden bg-ink-950 px-6"
     >
-      <div className="max-w-5xl mx-auto">
-        <motion.h2
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl font-bold text-white text-center mb-4"
-        >
-          Projects
-        </motion.h2>
-        <div className="w-16 h-1 bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 mx-auto mb-12 rounded-full" />
+      <div
+        className="pointer-events-none absolute -left-32 top-1/3 h-80 w-80 rounded-full bg-cyan-500/10 blur-[120px]"
+        aria-hidden="true"
+      />
+      <div className="mx-auto max-w-5xl">
+        <motion.div {...fadeUp(0)} className="mb-14 text-center">
+          <p className="eyebrow">Portofolio</p>
+          <h2 className="heading-section mt-3">Projects</h2>
+          <div className="mx-auto mt-6 h-1 w-14 rounded-full bg-gradient-to-r from-brand-400 to-cyan-400" />
+        </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid gap-6 sm:grid-cols-2">
           {projects.map((project, i) => (
             <motion.div
               key={project.id}
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 rounded-2xl overflow-hidden flex flex-col hover:border-teal-500/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/10 transition-all duration-300"
+              {...fadeUp(i * 0.08)}
+              className="card group relative flex flex-col overflow-hidden p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-400/30 hover:shadow-xl hover:shadow-brand-500/10 sm:p-7"
             >
+              <div
+                className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-400/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                aria-hidden="true"
+              />
 
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-xl font-semibold text-white mb-3">
-                  {project.title}
-                </h3>
+              <div className="mb-5 flex items-start justify-between gap-4">
+                <span className="font-display text-sm font-semibold text-brand-400">
+                  {String(project.id).padStart(2, "0")}
+                </span>
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-slate-400 transition-colors duration-300 group-hover:border-brand-400/40 group-hover:text-brand-300">
+                  <ArrowUpRight size={18} />
+                </span>
+              </div>
 
-                <p className="text-slate-400 text-sm leading-relaxed mb-5 flex-1">
-                  {project.description}
-                </p>
+              <h3 className="font-display text-xl font-semibold text-white transition-colors duration-300 group-hover:text-brand-300">
+                {project.title}
+              </h3>
 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-teal-500/15 to-cyan-500/15 text-teal-300 border border-teal-500/25 rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-400">
+                {project.description}
+              </p>
 
-                <div className="flex items-center gap-4">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm text-slate-300 hover:text-white transition-colors duration-200"
-                  >
-                    <GithubIcon size={16} />
-                    GitHub
-                  </a>
-                </div>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.techStack.map((tech) => (
+                  <span key={tech} className="chip hover:border-brand-400/40 hover:text-white">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-6 flex items-center gap-4 border-t border-white/5 pt-5">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 transition-colors duration-200 hover:text-brand-300"
+                >
+                  <GithubIcon size={16} />
+                  GitHub
+                  <ArrowUpRight size={14} className="opacity-60" />
+                </a>
               </div>
             </motion.div>
           ))}

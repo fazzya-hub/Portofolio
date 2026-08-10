@@ -1,4 +1,4 @@
-import { Code, Layers, Smartphone, Database, Wrench } from "lucide-react";
+import { Code, Database, Layers, Smartphone, Wrench } from "lucide-react";
 import { motion } from "framer-motion";
 
 const skillCategories = [
@@ -29,51 +29,51 @@ const skillCategories = [
   },
 ];
 
+const fadeUp = (delay = 0) => ({
+  initial: { y: 24, opacity: 0 },
+  whileInView: { y: 0, opacity: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] },
+});
+
 export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900 px-6"
+      className="section-pad relative overflow-hidden bg-ink-900 px-6"
     >
-      <div className="max-w-5xl mx-auto">
-        <motion.h2
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl font-bold text-white text-center mb-4"
-        >
-          Skills
-        </motion.h2>
-        <div className="w-16 h-1 bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 mx-auto mb-12 rounded-full" />
+      <div
+        className="pointer-events-none absolute -top-24 right-0 h-72 w-72 rounded-full bg-brand-500/10 blur-[120px]"
+        aria-hidden="true"
+      />
+      <div className="mx-auto max-w-5xl">
+        <motion.div {...fadeUp(0)} className="mb-14 text-center">
+          <p className="eyebrow">Keahlian</p>
+          <h2 className="heading-section mt-3">Skills</h2>
+          <div className="mx-auto mt-6 h-1 w-14 rounded-full bg-gradient-to-r from-brand-400 to-cyan-400" />
+        </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((category, i) => {
             const Icon = category.icon;
             return (
               <motion.div
                 key={category.title}
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 rounded-2xl p-6 hover:border-teal-500/40 transition-colors duration-300"
+                {...fadeUp(i * 0.08)}
+                className="card group p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-400/30 hover:shadow-xl hover:shadow-brand-500/10"
               >
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="p-2 bg-gradient-to-br from-teal-500/25 to-cyan-500/25 rounded-lg">
-                    <Icon size={20} className="text-teal-300" />
+                <div className="mb-5 flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500/20 to-cyan-500/20 text-brand-300 transition-colors duration-300 group-hover:from-brand-500/30 group-hover:to-cyan-500/30">
+                    <Icon size={20} />
                   </div>
-                  <h3 className="text-lg font-semibold text-white">
+                  <h3 className="font-display text-lg font-semibold text-white">
                     {category.title}
                   </h3>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 text-xs font-medium bg-gradient-to-r from-slate-700/60 to-slate-800/60 text-slate-300 border border-slate-600/40 rounded-full"
-                    >
+                    <span key={skill} className="chip hover:border-brand-400/40 hover:text-white">
                       {skill}
                     </span>
                   ))}
